@@ -1,0 +1,50 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BukkitService", "BukkitService\BukkitService.csproj", "{8C4BC352-F6A0-435F-89C3-C5DA317A9B2F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConnorsNetworkingSuite", "..\ConnorsNetworkingSuite\ConnorsNetworkingSuite\ConnorsNetworkingSuite.csproj", "{02EDC5E8-C8B1-4AB4-9262-60EA60E36577}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BukkitServiceAPI", "BukkitServiceAPI\BukkitServiceAPI.csproj", "{69799B7A-2015-4BF9-8E0B-6D4C0933FB42}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BasicClient", "BasicClient\BasicClient.csproj", "{BEB61B48-86FB-48C2-9368-A646613D2E91}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BukkitServiceWinforms", "BukkitServiceWinforms\BukkitServiceWinforms.csproj", "{5436D96F-5AD3-4A74-8F86-B9D39B3350A8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleClient", "ConsoleClient\ConsoleClient.csproj", "{67CDEE4A-B035-4815-9DE7-70DC5BF224BF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{02EDC5E8-C8B1-4AB4-9262-60EA60E36577}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{02EDC5E8-C8B1-4AB4-9262-60EA60E36577}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{02EDC5E8-C8B1-4AB4-9262-60EA60E36577}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{02EDC5E8-C8B1-4AB4-9262-60EA60E36577}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5436D96F-5AD3-4A74-8F86-B9D39B3350A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5436D96F-5AD3-4A74-8F86-B9D39B3350A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5436D96F-5AD3-4A74-8F86-B9D39B3350A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5436D96F-5AD3-4A74-8F86-B9D39B3350A8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{67CDEE4A-B035-4815-9DE7-70DC5BF224BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{67CDEE4A-B035-4815-9DE7-70DC5BF224BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{67CDEE4A-B035-4815-9DE7-70DC5BF224BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{67CDEE4A-B035-4815-9DE7-70DC5BF224BF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{69799B7A-2015-4BF9-8E0B-6D4C0933FB42}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{69799B7A-2015-4BF9-8E0B-6D4C0933FB42}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{69799B7A-2015-4BF9-8E0B-6D4C0933FB42}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{69799B7A-2015-4BF9-8E0B-6D4C0933FB42}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8C4BC352-F6A0-435F-89C3-C5DA317A9B2F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C4BC352-F6A0-435F-89C3-C5DA317A9B2F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C4BC352-F6A0-435F-89C3-C5DA317A9B2F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8C4BC352-F6A0-435F-89C3-C5DA317A9B2F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BEB61B48-86FB-48C2-9368-A646613D2E91}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BEB61B48-86FB-48C2-9368-A646613D2E91}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BEB61B48-86FB-48C2-9368-A646613D2E91}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BEB61B48-86FB-48C2-9368-A646613D2E91}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

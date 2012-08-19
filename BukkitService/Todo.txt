@@ -1,0 +1,7 @@
+﻿Pipe server - COMPLETE
+TCP server / client - COMPLETE
+Client interactions - 90%
+Permissions checking - COMPLETE
+Plugin loading
+API hooks
+Encrypted communication - COMPLETE

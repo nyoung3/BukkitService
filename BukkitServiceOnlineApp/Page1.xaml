@@ -1,0 +1,18 @@
+﻿<Page x:Class="BukkitServiceOnlineApp.Page1"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d" 
+      d:DesignHeight="480" d:DesignWidth="800"
+      Title="Bukkit Service" Loaded="PageLoaded1">
+    <Grid>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="70,10,0,0" VerticalAlignment="Top" Width="250" x:Name="hostbox"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="70,40,0,0" VerticalAlignment="Top" Width="250" x:Name="userbox"/>
+        <PasswordBox HorizontalAlignment="Left" Height="23" Margin="70,70,0,0" VerticalAlignment="Top" Width="250" x:Name="passbox"/>
+        <TextBlock HorizontalAlignment="Left" Margin="43,15,0,0" TextWrapping="Wrap" Text="Host" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="16,45,0,0" TextWrapping="Wrap" Text="Username" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="16,75,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
+        <Button Content="Connect" HorizontalAlignment="Left" Margin="245,98,0,0" VerticalAlignment="Top" Width="75" Click="ButtonClick1"/>
+    </Grid>
+</Page>

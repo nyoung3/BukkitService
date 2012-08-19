@@ -1,0 +1,8 @@
+﻿<Window x:Class="ConsoleClient.CertificateInfo"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="CertificateInfo" Height="600" Width="800">
+    <Grid>
+        <RichTextBox Name="rtb" IsReadOnly="True" VerticalScrollBarVisibility="Visible" />
+    </Grid>
+</Window>

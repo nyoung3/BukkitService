@@ -1,0 +1,16 @@
+﻿<Window x:Class="ConsoleClient.LoginWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="LoginWindow" Height="180" Width="400" 
+        ResizeMode="NoResize" Icon="Images/bukkit.ico">
+    <Grid>
+        <TextBox HorizontalAlignment="Right" Width="300" Height="25" VerticalAlignment="Top" Margin="0,10,10,0" Name="Hostbox" />
+        <TextBox HorizontalAlignment="Right" Width="300" Height="25" VerticalAlignment="Top" Margin="0,40,10,0" Name="Userbox" />
+        <PasswordBox HorizontalAlignment="Right" Width="300" Height="25" VerticalAlignment="Top" Margin="0,70,10,0" Name="Passbox" />
+        <Button Content="Connect" HorizontalAlignment="Right" VerticalAlignment="Top" Width="100" Height="25" Margin="00,100,10,0" Click="ConnectClick" />
+        <TextBlock Text="Host" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" FontSize="18" />
+        <TextBlock Text="User" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,40,0,0" FontSize="18" />
+        <TextBlock Text="Pass" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,70,0,0" FontSize="18" />
+        <CheckBox Content="Remember Password" HorizontalAlignment="Left" Margin="84,106,0,0" VerticalAlignment="Top" Name="rempass"/>
+    </Grid>
+</Window>
