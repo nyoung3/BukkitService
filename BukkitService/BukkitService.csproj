@@ -80,7 +80,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\ConnorsNetworkingSuite\ConnorsNetworkingSuite\ConnorsNetworkingSuite.csproj">
+    <ProjectReference Include="..\ConnorsNetworkingSuite\ConnorsNetworkingSuite.csproj">
       <Project>{02EDC5E8-C8B1-4AB4-9262-60EA60E36577}</Project>
       <Name>ConnorsNetworkingSuite</Name>
     </ProjectReference>

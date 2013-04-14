@@ -198,5 +198,186 @@ namespace ConsoleClient {
                 }
             }).Start();
         }
+
+        private void KickAllClick(object sender, RoutedEventArgs e) {
+            if (MessageBox.Show("Warning, this will remove all players from the server! Do you want to continue?", "Yes?", MessageBoxButton.YesNo) == MessageBoxResult.Yes) {
+                Connection.Write("/js fap('event.player.kickPlayer(\"\xA7dYou have beek kicked!\")')");
+                MessageBox.Show("All players have been kicked!");
+            } else {
+                MessageBox.Show("Players have not been kicked");
+            }
+        }
+
+        private void ServerLockdownEnable(object sender, RoutedEventArgs e) {
+            if (MessageBox.Show("Warning, this will kick, and lock all non-staff members out of the server. Do you want to continue?", "Yes?", MessageBoxButton.YesNo) == MessageBoxResult.Yes) {
+                Connection.Write("/js lockdown.lock();");
+                Connection.Write("/js fap('event.player.kickPlayer(\"\xA7cSERVER ENTERING LOCK DOWN!\")')");
+                MessageBox.Show("Server Entering Lockdown Mode");
+            } else {
+                MessageBox.Show("Server will not enter lockdown mode.");
+            }
+        }
+        private void ServerLockdownDisable(object sender, RoutedEventArgs e) {
+            Connection.Write("/js lockdown.unlock();");
+            MessageBox.Show("Lockdown mode has been disabled.");
+        }
+
+        private void DisableReg(object sender, RoutedEventArgs e) {
+            if (MessageBox.Show("Warning, this will disable all promotion on the server. Do you want to continue?", "Yes?", MessageBoxButton.YesNo) == MessageBoxResult.Yes) {
+                Connection.Write("/js persistence.put('lockoutprom', true);");
+                MessageBox.Show("Promotion has been disabled!");
+            } else {
+                MessageBox.Show("Promotion has not been disabled");
+            }
+        }
+
+        private void EnableReg(object sender, RoutedEventArgs e) {
+            Connection.Write("/js persistence.put('lockoutprom', false);");
+            MessageBox.Show("Promotion has been re enabled!");
+        }
+
+        private void BroadcastButton(object sender, RoutedEventArgs e) {
+            if (string.IsNullOrWhiteSpace(BroadCastText.Text)) {
+                Connection.Write("/broadcast §d§lSERVER BROADCAST:§r§b " + BroadCastText.Text.Trim());
+                BroadCastText.Text = "";
+            } else {
+                MessageBox.Show("Invalid input!");
+            }
+        }
+
+        private void LwcClean(object sender, RoutedEventArgs e) {
+            if (MessageBox.Show("This will attempt to remove entries from the database that no longer exist. This is a safe function and should not cause any loss of protections.", "Ok?", MessageBoxButton.OKCancel) == MessageBoxResult.OK) {
+                Connection.Write("/lwc admin cleanup");
+                MessageBox.Show("Database has been cleaned up!");
+            } else {
+                MessageBox.Show("Database not cleaned");
+            }
+        }
+
+        //private void LockOut(object sender, RoutedEventArgs e) {
+        //    if (UnlockFunctions1.Text == "cmcs17106") {
+        //        UnlockFunctions1.Text = "";
+        //        KickAll.IsEnabled = true;
+        //        LockDownOn.IsEnabled = true;
+        //        LockDownOff.IsEnabled = true;
+        //        PromOff.IsEnabled = true;
+        //        PromOn.IsEnabled = true;
+        //        BroadcastB.IsEnabled = true;
+        //        BroadCastText.IsEnabled = true;
+        //        LwcCleaner.IsEnabled = true;
+        //    }
+
+        //}
+
+        private void GbanButton_Click(object sender, RoutedEventArgs e) {
+            if (string.IsNullOrWhiteSpace(GbanUsr.Text) ||
+                string.IsNullOrWhiteSpace(GbanReason.Text) || GbanUsr.Text == "Username" || GbanReason.Text == "Reason For Ban") {
+                MessageBox.Show("Oops! Check to make sure you have a player AND a reason specified!");
+                return;
+            }
+
+            if (MessageBox.Show("Clicking YES will permanently GLOBAL ban " + GbanUsr.Text + " from the server for " + GbanReason.Text +
+                ". Do you wish to continue?", "Yes?", MessageBoxButton.YesNo) == MessageBoxResult.Yes) {
+                Connection.Write("/ban g " + GbanUsr.Text + " " + GbanReason.Text);
+                MessageBox.Show(GbanUsr.Text + " has been GLOBAL banned!");
+                GbanUsr.Text = "";
+                GbanReason.Text = "";
+            }
+        }
+
+        private void GbanReason_GotKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e) {
+            if (GbanReason.Text == "Reason For Ban") {
+                GbanReason.Text = "";
+            }
+        }
+
+        private void GbanUsr_GotKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e) {
+            if (GbanUsr.Text == "Username") {
+                GbanUsr.Text = "";
+            }
+        }
+
+        private void LbanUser_GotKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e) {
+            if (LbanUser.Text == "Username") {
+                LbanUser.Text = "";
+            }
+        }
+
+        private void LbanReason_GotKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e) {
+            if (LbanReason.Text == "Reason For Ban") {
+                LbanReason.Text = "";
+            }
+        }
+
+        private void LbanButton(object sender, RoutedEventArgs e) {
+            if (string.IsNullOrWhiteSpace(LbanUser.Text) || string.IsNullOrWhiteSpace(LbanReason.Text) || LbanUser.Text == "Username" || LbanReason.Text == "Reason For Ban") {
+                MessageBox.Show("Oops! Check to make sure you have a player AND a reason specified!");
+                return;
+            }
+
+            if (MessageBox.Show("Clicking YES will permanently LOCAL ban " + LbanUser.Text + " from the server for " + LbanReason.Text + ". Do you wish to continue?",
+                "Yes?", MessageBoxButton.YesNo) == MessageBoxResult.Yes) {
+                    Connection.Write("/ban " + LbanUser.Text + LbanReason.Text);
+                    MessageBox.Show(LbanUser.Text + " has been LOCAL banned!");
+                    LbanUser.Text = "";
+                    LbanReason.Text = "";
+            }
+        }
+
+        private void MuteName_GotKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e) {
+            if (MuteName.Text == "Username") {
+                MuteName.Text = "";
+            }
+        }
+
+        private void MuteButton(object sender, RoutedEventArgs e) {
+            if (string.IsNullOrWhiteSpace(MuteName.Text) || MuteName.Text == "Username") {
+                MessageBox.Show("Did you specify a player?");
+            } else {
+                Connection.Write("/mute " + MuteName.Text);
+                MessageBox.Show(MuteName.Text + " has been muted!");
+            }
+        }
+
+        private void PlayButton(object sender, RoutedEventArgs e) {
+            Connection.Write("/js gplr('" + PlayUsr.Text + "').chat('" + PlayCmd.Text + "');");
+            PlayCmd.Text = "";
+            PlayUsr.Text = "";
+        }
+
+        private void AllCommandClick(object sender, RoutedEventArgs e) {
+            Connection.Write("/js fap('event.player.chat(\"" + AllCmd.Text + "\")');");
+            AllCmd.Text = "";
+        }
+
+        private void GbanUsr_LostKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e) {
+            if (string.IsNullOrWhiteSpace(GbanUsr.Text)) {
+                GbanUsr.Text = "Username";
+            }
+        }
+
+        private void LbanUser_LostKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e) {
+            if (string.IsNullOrWhiteSpace(LbanUser.Text)) {
+                LbanUser.Text = "Username";
+            }
+        }
+
+        private void MuteName_LostKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e) {
+            if (string.IsNullOrWhiteSpace(MuteName.Text)) {
+                MuteName.Text = "Username";
+            }
+        }
+
+        private void GbanReason_LostKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e) {
+            if (string.IsNullOrWhiteSpace(GbanReason.Text)) {
+                GbanReason.Text = "Reason For Ban";
+            }
+        }
+
+        private void LbanReason_LostKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e) {
+            if (string.IsNullOrWhiteSpace(LbanReason.Text)) {
+                LbanReason.Text = "Reason For Ban";
+            }
+        }
     }
 }

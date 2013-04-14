@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BukkitService", "BukkitService\BukkitService.csproj", "{8C4BC352-F6A0-435F-89C3-C5DA317A9B2F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConnorsNetworkingSuite", "..\ConnorsNetworkingSuite\ConnorsNetworkingSuite\ConnorsNetworkingSuite.csproj", "{02EDC5E8-C8B1-4AB4-9262-60EA60E36577}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConnorsNetworkingSuite", "ConnorsNetworkingSuite\ConnorsNetworkingSuite.csproj", "{02EDC5E8-C8B1-4AB4-9262-60EA60E36577}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BukkitServiceAPI", "BukkitServiceAPI\BukkitServiceAPI.csproj", "{69799B7A-2015-4BF9-8E0B-6D4C0933FB42}"
 EndProject

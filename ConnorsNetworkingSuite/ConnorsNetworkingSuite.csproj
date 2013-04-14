@@ -4,13 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{69799B7A-2015-4BF9-8E0B-6D4C0933FB42}</ProjectGuid>
+    <ProjectGuid>{02EDC5E8-C8B1-4AB4-9262-60EA60E36577}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BukkitServiceAPI</RootNamespace>
-    <AssemblyName>BukkitServiceAPI</AssemblyName>
+    <RootNamespace>ConnorsNetworkingSuite</RootNamespace>
+    <AssemblyName>ConnorsNetworkingSuite</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -20,6 +22,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -28,30 +31,20 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Client.cs" />
-    <Compile Include="Config.cs" />
-    <Compile Include="Event\EventManager.cs" />
-    <Compile Include="Event\ServerStartEvent.cs" />
-    <Compile Include="Logger.cs" />
-    <Compile Include="ServerPlugin.cs" />
+    <Compile Include="LoopbackStream.cs" />
+    <Compile Include="NetStream.cs" />
+    <Compile Include="NetStreamHost.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Authentication\CustomAuthentication.cs" />
-    <Compile Include="Util.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\ConnorsNetworkingSuite\ConnorsNetworkingSuite.csproj">
-      <Project>{02EDC5E8-C8B1-4AB4-9262-60EA60E36577}</Project>
-      <Name>ConnorsNetworkingSuite</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Command\" />
+    <Compile Include="SimpleStream.cs" />
+    <Compile Include="SimpleStreamHost.cs" />
+    <Compile Include="SslStream.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

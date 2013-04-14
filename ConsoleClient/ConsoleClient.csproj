@@ -37,6 +37,9 @@
     <ApplicationIcon>Images\bukkit.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ConnorsNetworkingSuite">
+      <HintPath>..\ConnorsNetworkingSuite.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Security" />
@@ -121,21 +124,12 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="temp.txt" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Images\bukkit.ico" />
     <Resource Include="Images\bukkit_logo.png" />
     <Resource Include="Images\restart.png" />
     <Resource Include="Images\right_arrow.png" />
     <Resource Include="Images\start.png" />
     <Resource Include="Images\stop.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\ConnorsNetworkingSuite\ConnorsNetworkingSuite\ConnorsNetworkingSuite.csproj">
-      <Project>{02edc5e8-c8b1-4ab4-9262-60ea60e36577}</Project>
-      <Name>ConnorsNetworkingSuite</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

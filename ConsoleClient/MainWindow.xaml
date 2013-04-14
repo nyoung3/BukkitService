@@ -2,9 +2,23 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="MainWindow" Height="480" Width="800" Loaded="WindowLoaded1" 
-        Closed="WindowClosed1" Icon="Images/bukkit.ico">
+        Closed="WindowClosed1" Icon="Images/bukkit.ico" BorderThickness="1">
+    <Window.BorderBrush>
+        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+            <GradientStop Color="Red" Offset="0.0"/>
+            <GradientStop Color="Orange" Offset="0.17"/>
+            <GradientStop Color="Yellow" Offset="0.33"/>
+            <GradientStop Color="Green" Offset="0.5"/>
+            <GradientStop Color="Blue" Offset="0.67"/>
+            <GradientStop Color="Indigo" Offset="0.83"/>
+            <GradientStop Color="Violet" Offset="1.0"/>
+        </LinearGradientBrush>
+    </Window.BorderBrush>
     <Grid>
         <Menu IsMainMenu="True">
+            <Menu.Background>
+                <ImageBrush/>
+            </Menu.Background>
             <MenuItem Header="_Server">
                 <MenuItem Header="Start" Click="StartClick">
                     <MenuItem.Icon>
@@ -27,6 +41,9 @@
             </MenuItem>
         </Menu>
         <TabControl Margin="0,23,0,0">
+            <TabControl.Background>
+                <ImageBrush/>
+            </TabControl.Background>
             <TabItem Header="Console">
                 <Grid>
                     <RichTextBox Name="consoleOutput" IsReadOnly="True" Margin="0,0,0,24" />
@@ -50,20 +67,101 @@
                     </ContextMenu>
                 </TabItem.ContextMenu>
                 <Grid>
-                    <ScrollViewer Margin="0,0" Width="400" HorizontalAlignment="Left">
-                        <Grid>
-                            <TextBlock Text="Online Users" FontSize="20" Height="30" Margin="5,0,5,0" VerticalAlignment="Top" />
-                            <ScrollViewer Height="300" Margin="15,30,15,0" VerticalAlignment="Top">
-                                <ListView Name="OnlinePlayerList"></ListView>
-                            </ScrollViewer>
-                            <TextBlock Text="Installed Plugins" FontSize="20" Margin="5,340,5,0" VerticalAlignment="Top" />
-                            <ScrollViewer Height="300" Margin="15,370,15,0" VerticalAlignment="Top">
-                                <ListView Name="PluginList"></ListView>
-                            </ScrollViewer>
-                        </Grid>
+                    <ScrollViewer Margin="0,0" HorizontalAlignment="Left">
+                        <Viewbox Height="Auto">
+                            <StackPanel Width="600">
+                                <TextBlock Text="Online Users " FontSize="20" Height="30" Margin="5,0,5,0" VerticalAlignment="Top" />
+                                <ItemsControl Name="OnlinePlayerList"/>
+                                <TextBlock Text="Installed Plugins" FontSize="20" VerticalAlignment="Top" />
+                                <ItemsControl Name="PluginList"/>
+                            </StackPanel>
+                        </Viewbox>
                     </ScrollViewer>
-                    <Frame Name="infopage" Margin="400,0,0,0" />
+                    <Frame Name="infopage" Margin="400,0,0,0" Visibility="Collapsed" />
                 </Grid>
+            </TabItem>
+            <TabItem Header="Controls">
+                <ScrollViewer Margin="0,-1,0,1" >
+                    <Viewbox>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <StackPanel Width="200" Margin="0,0,2,0">
+                                <Button x:Name="KickAll" Content="Kick all Players" Click="KickAllClick" Margin="10,7,0,0" IsEnabled="True"/>
+                                <Button x:Name="LockDownOn" Content="Enable Server Lockdown" Margin="10,30,0,0" Click="ServerLockdownEnable" ToolTip="Locks all non-staff members out of the server" IsEnabled="True" />
+                                <Button x:Name="LockDownOff" Content="Disable Server Lockdown" Margin="10,7,0,0" Click="ServerLockdownDisable" IsEnabled="True" />
+                                <Button x:Name="PromOff" Content="Disable Promotion" Margin="10,30,0,0" Click="DisableReg" IsEnabled="True" />
+                                <Button x:Name="PromOn" Content="Enable Promotion" Margin="10,7,0,0" Click="EnableReg" IsEnabled="True" />
+                                <Button x:Name="BroadcastB" Content="Send Broadcast" Margin="10,30,0,0" Click="BroadcastButton" IsEnabled="True" />
+                                <TextBox x:Name="BroadCastText" TextWrapping="Wrap" Text="" Margin="10,7,0,0" IsEnabled="True" />
+                            </StackPanel>
+                            <StackPanel Grid.Column="1" Width="250" Grid.ColumnSpan="3" Margin="2,0,1,0">
+                                <Button x:Name="LwcCleaner" Content="LWC Database Cleanup" Margin="10,7,5,0" Click="LwcClean" IsEnabled="True"></Button>
+                            </StackPanel>
+                            <StackPanel Grid.Column="4" Width="200" Margin="3,0,4,0"/>
+                            <StackPanel Grid.Column="4" Width="Auto">
+                                <Label Content="New Console Client tab created by&#xA;Nathan with the help of &#xA;Connor&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;Please request the password for&#xD;&#xA;unlocking the protected functions&#xD;&#xA;from Nathan!&#xD;&#xA;&#xA;&#xA;There will be more updates in the&#xA;future!&#xA;&#xA;&#xA;- Nathan" HorizontalAlignment="Center" Height="276" Width="194" Margin="10,0,4,0" Background="{x:Null}" />
+                            </StackPanel>
+                        </Grid>
+                    </Viewbox>
+                </ScrollViewer>
+            </TabItem>
+            <TabItem Header="Moderation">
+                <ScrollViewer Margin="0,-1,0,1" >
+                    <Viewbox>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="200" />
+                                <ColumnDefinition Width="200" />
+                                <ColumnDefinition Width="200" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="30" />
+                                <RowDefinition Height="30" />
+                                <RowDefinition Height="30" />
+                            </Grid.RowDefinitions>
+                            <Button Grid.Column="0" Grid.Row="0" x:Name="GbanButton" Content="GLOBAL BAN USER" Margin="10,7,7,0" Click="GbanButton_Click" />
+                            <Button Grid.Column="0" Grid.Row="1" Content="LOCAL BAN USER" Margin="10,7,7,0" Click="LbanButton" />
+                            <Button Grid.Column="0" Grid.Row="2" Content="MUTE USER'S CHAT" Margin="10,7,7,0" Click="MuteButton" />
+
+                            <TextBox Grid.Column="1" Grid.Row="0" x:Name="GbanUsr" Margin="0,7,7,0" Text="Username" GotKeyboardFocus="GbanUsr_GotKeyboardFocus" LostKeyboardFocus="GbanUsr_LostKeyboardFocus"/>
+                            <TextBox Grid.Column="1" Grid.Row="1" x:Name="LbanUser" Margin="0,7,7,0" Text="Username" GotKeyboardFocus="LbanUser_GotKeyboardFocus" LostKeyboardFocus="LbanUser_LostKeyboardFocus" />
+                            <TextBox Grid.Column="1" Grid.Row="2" x:Name="MuteName" Margin="0,7,7,0" Text="Username" GotKeyboardFocus="MuteName_GotKeyboardFocus" LostKeyboardFocus="MuteName_LostKeyboardFocus" />
+
+                            <TextBox Grid.Column="2" Grid.Row="0" x:Name="GbanReason" Margin="0,7,7,0" Text="Reason For Ban" GotKeyboardFocus="GbanReason_GotKeyboardFocus" LostKeyboardFocus="GbanReason_LostKeyboardFocus" />
+                            <TextBox Grid.Column="2" Grid.Row="1" x:Name="LbanReason" Margin="0,7,7,0" Text="Reason For Ban" GotKeyboardFocus="LbanReason_GotKeyboardFocus" LostKeyboardFocus="LbanReason_LostKeyboardFocus" />
+                        </Grid>
+                    </Viewbox>
+                </ScrollViewer>
+            </TabItem>
+            <TabItem Header="DEV PAGE">
+                <ScrollViewer Margin="0,-1,0,1" >
+                    <Viewbox>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="150" />
+                                <ColumnDefinition Width="200" />
+                                <ColumnDefinition Width="200" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="30" />
+                                <RowDefinition Height="30" />
+                            </Grid.RowDefinitions>
+                            <Button Grid.Column="0" Grid.Row="0" Content="Run command at player" Click="PlayButton" Margin="10,7,7,0" />
+                            <Button Grid.Column="0" Grid.Row="1" Content="All Players Run CMD" Click="AllCommandClick" Margin="10,7,7,0" />
+
+                            <TextBox Grid.Column="1" Grid.Row="0" x:Name="PlayUsr" Text="Username" Margin="0,7,7,0" />
+                            <TextBox Grid.Column="1" Grid.Row="1" x:Name="AllCmd" Text="Command" Margin="0,7,7,0" />
+
+                            <TextBox Grid.Column="2" Grid.Row="0" x:Name="PlayCmd" Text="Command" Margin="0,7,7,0" />
+                        </Grid>
+                    </Viewbox>
+                </ScrollViewer>
             </TabItem>
         </TabControl>
     </Grid>
