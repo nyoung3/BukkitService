@@ -237,7 +237,7 @@ namespace ConsoleClient {
         }
 
         private void BroadcastButton(object sender, RoutedEventArgs e) {
-            if (string.IsNullOrWhiteSpace(BroadCastText.Text)) {
+            if (!string.IsNullOrWhiteSpace(BroadCastText.Text)) {
                 Connection.Write("/broadcast §d§lSERVER BROADCAST:§r§b " + BroadCastText.Text.Trim());
                 BroadCastText.Text = "";
             } else {
@@ -396,7 +396,9 @@ namespace ConsoleClient {
         }
 
         private void PlayUsr_LostKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e) {
-            PlayUsr.Text = "Username";
+            if (string.IsNullOrWhiteSpace(PlayUsr.Text)) {
+                PlayUsr.Text = "Username";
+            }
         }
 
         private void PlayCmd_GotKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e) {
@@ -406,7 +408,9 @@ namespace ConsoleClient {
         }
 
         private void PlayCmd_LostKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e) {
-            PlayUsr.Text = "Command";
+            if (string.IsNullOrWhiteSpace(PlayCmd.Text)) {
+                PlayCmd.Text = "Command";
+            }
         }
 
         private void AllCmd_GotKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e) {
@@ -416,7 +420,100 @@ namespace ConsoleClient {
         }
 
         private void AllCmd_LostKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e) {
-            AllCmd.Text = "Command";
+            if (string.IsNullOrWhiteSpace(AllCmd.Text)) {
+                AllCmd.Text = "Command";
+            }
+        }
+
+        private void KickButtonClick1(object sender, RoutedEventArgs e) {
+            if (!string.IsNullOrWhiteSpace(KickUsr.Text) || !string.IsNullOrWhiteSpace(KickRsn.Text)) {
+                Connection.Write("/kick " + KickUsr.Text + " " + KickRsn.Text);
+            } else {
+                MessageBox.Show("Please specify a user and a reason.");
+            }
+        }
+
+        private void KickUsr_GotKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e) {
+            if (KickUsr.Text == "Username") {
+                KickUsr.Text = "";
+            }
+        }
+
+        private void KickUsr_LostKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e) {
+            if (string.IsNullOrWhiteSpace(KickUsr.Text)) {
+                KickUsr.Text = "Username";
+            }
+        }
+
+        private void KickRsn_GotKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e) {
+            if (KickRsn.Text == "Reason For Kick") {
+                KickRsn.Text = "";
+            }
+        }
+
+        private void KickRsn_LostKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e) {
+            if (string.IsNullOrWhiteSpace(KickRsn.Text)) {
+                KickRsn.Text = "Reason For Kick";
+            }
+        }
+
+        private void TpUsr_GotKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e) {
+            if (TpUsr.Text == "User to teleport") {
+                TpUsr.Text = "";
+            }
+        }
+
+        private void TpUsr_LostKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e) {
+            if (string.IsNullOrWhiteSpace(TpUsr.Text)) {
+                TpUsr.Text = "User to teleport";
+            }
+        }
+
+        private void TpTarget_GotKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e) {
+            if (TpTarget.Text == "Destination") {
+                TpTarget.Text = "";
+            }
+        }
+
+        private void TpTarget_LostKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e) {
+            if (string.IsNullOrWhiteSpace(TpTarget.Text)) {
+                TpTarget.Text = "Destination";
+            }
+        }
+
+        private void TpButtonClick1(object sender, RoutedEventArgs e) {
+            if (!string.IsNullOrWhiteSpace(TpUsr.Text) || !string.IsNullOrWhiteSpace(TpTarget.Text)) {
+                Connection.Write("/tp -s " + TpUsr.Text + " " + TpTarget.Text);
+                TpUsr.Text = "Username";
+                TpTarget.Text = "Destination";
+            } else {
+                MessageBox.Show("Please specify a target and a destination!");
+            }
+        }
+
+        private void PexAddGroup(object sender, RoutedEventArgs e) {
+            string group = GpermGrp.Text.ToString();
+            if (!string.IsNullOrWhiteSpace(Gperm.Text)) {
+                if (GpermGrp.SelectedIndex > 0) {
+                    Connection.Write("./pex group " + group + " add " + Gperm.Text);
+                    GpermGrp.SelectedIndex = 0;
+                    Gperm.Text = "Permission Node";
+                } else {
+                    MessageBox.Show("Please Specify all Information!");
+                }
+            }
+        }
+
+        private void Gperm_GotKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e) {
+            if (Gperm.Text == "Permission Node") {
+                Gperm.Text = "";
+            }
+        }
+
+        private void Gperm_LostKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e) {
+            if (string.IsNullOrWhiteSpace(Gperm.Text)) {
+                Gperm.Text = "Permission Node";
+            }
         }
     }
 }

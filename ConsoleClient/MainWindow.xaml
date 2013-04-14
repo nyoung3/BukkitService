@@ -124,15 +124,22 @@
                                 <RowDefinition Height="30" />
                                 <RowDefinition Height="30" />
                                 <RowDefinition Height="30" />
+                                <RowDefinition Height="30" />
+                                <RowDefinition Height="30" />
                             </Grid.RowDefinitions>
                             <Button Grid.Column="0" Grid.Row="0" x:Name="GbanButton" Content="GLOBAL BAN USER" Margin="10,7,7,0" Click="GbanButton_Click" />
                             <Button Grid.Column="0" Grid.Row="1" Content="LOCAL BAN USER" Margin="10,7,7,0" Click="LbanButton" />
                             <Button Grid.Column="0" Grid.Row="2" Content="MUTE USER'S CHAT" Margin="10,7,7,0" Click="MuteButton" />
+                            <Button Grid.Column="0" Grid.Row="3" Content="Kick User From Server" Margin="10,7,7,0" Click="KickButtonClick1" />
+                            <Button Grid.Column="0" Grid.Row="4" Content="Teleport User" Margin="10,7,7,0" Click="TpButtonClick1" />
 
                             <TextBox Grid.Column="1" Grid.Row="0" x:Name="GbanUsr" Margin="0,7,7,0" Text="Username" GotKeyboardFocus="GbanUsr_GotKeyboardFocus" LostKeyboardFocus="GbanUsr_LostKeyboardFocus"/>
                             <TextBox Grid.Column="1" Grid.Row="1" x:Name="LbanUser" Margin="0,7,7,0" Text="Username" GotKeyboardFocus="LbanUser_GotKeyboardFocus" LostKeyboardFocus="LbanUser_LostKeyboardFocus" />
                             <TextBox Grid.Column="1" Grid.Row="2" x:Name="MuteName" Margin="0,7,7,0" Text="Username" GotKeyboardFocus="MuteName_GotKeyboardFocus" LostKeyboardFocus="MuteName_LostKeyboardFocus" />
-
+                            <TextBox Grid.Column="1" Grid.Row="3" x:Name="KickUsr" Margin="0,7,7,0" Text="Username" GotKeyboardFocus="KickUsr_GotKeyboardFocus" LostKeyboardFocus="KickUsr_LostKeyboardFocus"/>
+                            <TextBox Grid.Column="1" Grid.Row="4" x:Name="TpUsr" Margin="0,7,7,0" Text="User to teleport" GotKeyboardFocus="TpUsr_GotKeyboardFocus" LostKeyboardFocus="TpUsr_LostKeyboardFocus" />
+                            <TextBox Grid.Column="2" Grid.Row="4" x:Name="TpTarget" Margin="0,7,7,0" Text="Destination" GotKeyboardFocus="TpTarget_GotKeyboardFocus" LostKeyboardFocus="TpTarget_LostKeyboardFocus" />
+                            <TextBox Grid.Column="2" Grid.Row="3" x:Name="KickRsn" Margin="0,7,7,0" Text="Reason For Kick" GotKeyboardFocus="KickRsn_GotKeyboardFocus" LostKeyboardFocus="KickRsn_LostKeyboardFocus" />
                             <TextBox Grid.Column="2" Grid.Row="0" x:Name="GbanReason" Margin="0,7,7,0" Text="Reason For Ban" GotKeyboardFocus="GbanReason_GotKeyboardFocus" LostKeyboardFocus="GbanReason_LostKeyboardFocus" />
                             <TextBox Grid.Column="2" Grid.Row="1" x:Name="LbanReason" Margin="0,7,7,0" Text="Reason For Ban" GotKeyboardFocus="LbanReason_GotKeyboardFocus" LostKeyboardFocus="LbanReason_LostKeyboardFocus" />
                         </Grid>
@@ -151,12 +158,26 @@
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="30" />
                                 <RowDefinition Height="30" />
+                                <RowDefinition Height="30" />
                             </Grid.RowDefinitions>
                             <Button Grid.Column="0" Grid.Row="0" Content="Run command at player" Click="PlayButton" Margin="10,7,7,0" />
                             <Button Grid.Column="0" Grid.Row="1" Content="All Players Run CMD" Click="AllCommandClick" Margin="10,7,7,0" />
+                            
+                            <Button Grid.Column="0" Grid.Row="2"  Margin="10,7,7,0" Content="Add Group Permission" Click="PexAddGroup" />
 
+                            <ComboBox Grid.Column="1" Grid.Row="2" x:Name="GpermGrp" Margin="0,7,7,0" IsSynchronizedWithCurrentItem="False" SelectedIndex="0">
+                                <ComboBoxItem Content="Select a Group" IsEnabled="False" IsSelected="True"/>
+                                <ComboBoxItem Content="Recruit" x:Name="RecruitA"/>
+                                <ComboBoxItem Content="Member" x:Name="MemberA"/>
+                                <ComboBoxItem Content="Veteran" x:Name="VetA"/>
+                                <ComboBoxItem Content="VIP" x:Name="VipA"/>
+                                <ComboBoxItem Content="Moderator" x:Name="ModA"/>
+                                <ComboBoxItem Content="Admin" x:Name="AdminA"/>
+                                <ComboBoxItem Content="Owner" x:Name="OwnerA"/>
+                            </ComboBox>
                             <TextBox Grid.Column="1" Grid.Row="0" x:Name="PlayUsr" Text="Username" Margin="0,7,7,0" GotKeyboardFocus="PlayUsr_GotKeyboardFocus" LostKeyboardFocus="PlayUsr_LostKeyboardFocus"/>
                             <TextBox Grid.Column="1" Grid.Row="1" x:Name="AllCmd" Text="Command" Margin="0,7,7,0" GotKeyboardFocus="AllCmd_GotKeyboardFocus" LostKeyboardFocus="AllCmd_LostKeyboardFocus" />
+                            <TextBox Grid.Column="2" Grid.Row="2" x:Name="Gperm" Text="Permission Node" GotKeyboardFocus="Gperm_GotKeyboardFocus" LostKeyboardFocus="Gperm_LostKeyboardFocus" Margin="0,7,7,0" />
                             <TextBox Grid.Column="2" Grid.Row="0" x:Name="PlayCmd" Text="Command" Margin="0,7,7,0" GotKeyboardFocus="PlayCmd_GotKeyboardFocus" LostKeyboardFocus="PlayCmd_LostKeyboardFocus" />
                         </Grid>
                     </Viewbox>
