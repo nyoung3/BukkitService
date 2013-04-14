@@ -317,10 +317,10 @@ namespace ConsoleClient {
 
             if (MessageBox.Show("Clicking YES will permanently LOCAL ban " + LbanUser.Text + " from the server for " + LbanReason.Text + ". Do you wish to continue?",
                 "Yes?", MessageBoxButton.YesNo) == MessageBoxResult.Yes) {
-                    Connection.Write("/ban " + LbanUser.Text + LbanReason.Text);
-                    MessageBox.Show(LbanUser.Text + " has been LOCAL banned!");
-                    LbanUser.Text = "";
-                    LbanReason.Text = "";
+                Connection.Write("/ban " + LbanUser.Text + LbanReason.Text);
+                MessageBox.Show(LbanUser.Text + " has been LOCAL banned!");
+                LbanUser.Text = "";
+                LbanReason.Text = "";
             }
         }
 
@@ -340,14 +340,23 @@ namespace ConsoleClient {
         }
 
         private void PlayButton(object sender, RoutedEventArgs e) {
-            Connection.Write("/js gplr('" + PlayUsr.Text + "').chat('" + PlayCmd.Text + "');");
-            PlayCmd.Text = "";
-            PlayUsr.Text = "";
+            if (PlayUsr.Text == "Username" || PlayCmd.Text == "Command" || string.IsNullOrWhiteSpace(PlayUsr.Text) ||
+                string.IsNullOrWhiteSpace(PlayCmd.Text)) {
+                MessageBox.Show("Please specify a player and a command or text!");
+            } else {
+                Connection.Write("/js gplr('" + PlayUsr.Text + "').chat('" + PlayCmd.Text + "');");
+                PlayCmd.Text = "";
+                PlayUsr.Text = "";
+            }
         }
 
         private void AllCommandClick(object sender, RoutedEventArgs e) {
-            Connection.Write("/js fap('event.player.chat(\"" + AllCmd.Text + "\")');");
-            AllCmd.Text = "";
+            if (AllCmd.Text == "Command" || string.IsNullOrWhiteSpace(AllCmd.Text)) {
+                MessageBox.Show("Please Specify a command or text!");
+            } else {
+                Connection.Write("/js fap('event.player.chat(\"" + AllCmd.Text + "\")');");
+                AllCmd.Text = "";
+            }
         }
 
         private void GbanUsr_LostKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e) {
@@ -378,6 +387,36 @@ namespace ConsoleClient {
             if (string.IsNullOrWhiteSpace(LbanReason.Text)) {
                 LbanReason.Text = "Reason For Ban";
             }
+        }
+
+        private void PlayUsr_GotKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e) {
+            if (PlayUsr.Text == "Username") {
+                PlayUsr.Text = "";
+            }
+        }
+
+        private void PlayUsr_LostKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e) {
+            PlayUsr.Text = "Username";
+        }
+
+        private void PlayCmd_GotKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e) {
+            if (PlayUsr.Text == "Command") {
+                PlayUsr.Text = "";
+            }
+        }
+
+        private void PlayCmd_LostKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e) {
+            PlayUsr.Text = "Command";
+        }
+
+        private void AllCmd_GotKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e) {
+            if (AllCmd.Text == "Command") {
+                AllCmd.Text = "";
+            }
+        }
+
+        private void AllCmd_LostKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e) {
+            AllCmd.Text = "Command";
         }
     }
 }

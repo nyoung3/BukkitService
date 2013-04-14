@@ -68,7 +68,7 @@
                 </TabItem.ContextMenu>
                 <Grid>
                     <ScrollViewer Margin="0,0" HorizontalAlignment="Left">
-                        <Viewbox Height="Auto">
+                        <Viewbox Height="Auto" VerticalAlignment="Top">
                             <StackPanel Width="600">
                                 <TextBlock Text="Online Users " FontSize="20" Height="30" Margin="5,0,5,0" VerticalAlignment="Top" />
                                 <ItemsControl Name="OnlinePlayerList"/>
@@ -82,7 +82,7 @@
             </TabItem>
             <TabItem Header="Controls">
                 <ScrollViewer Margin="0,-1,0,1" >
-                    <Viewbox>
+                    <Viewbox VerticalAlignment="Top">
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="Auto" />
@@ -113,7 +113,7 @@
             </TabItem>
             <TabItem Header="Moderation">
                 <ScrollViewer Margin="0,-1,0,1" >
-                    <Viewbox>
+                    <Viewbox VerticalAlignment="Top">
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="200" />
@@ -141,7 +141,7 @@
             </TabItem>
             <TabItem Header="DEV PAGE">
                 <ScrollViewer Margin="0,-1,0,1" >
-                    <Viewbox>
+                    <Viewbox VerticalAlignment="Top">
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="150" />
@@ -155,10 +155,9 @@
                             <Button Grid.Column="0" Grid.Row="0" Content="Run command at player" Click="PlayButton" Margin="10,7,7,0" />
                             <Button Grid.Column="0" Grid.Row="1" Content="All Players Run CMD" Click="AllCommandClick" Margin="10,7,7,0" />
 
-                            <TextBox Grid.Column="1" Grid.Row="0" x:Name="PlayUsr" Text="Username" Margin="0,7,7,0" />
-                            <TextBox Grid.Column="1" Grid.Row="1" x:Name="AllCmd" Text="Command" Margin="0,7,7,0" />
-
-                            <TextBox Grid.Column="2" Grid.Row="0" x:Name="PlayCmd" Text="Command" Margin="0,7,7,0" />
+                            <TextBox Grid.Column="1" Grid.Row="0" x:Name="PlayUsr" Text="Username" Margin="0,7,7,0" GotKeyboardFocus="PlayUsr_GotKeyboardFocus" LostKeyboardFocus="PlayUsr_LostKeyboardFocus"/>
+                            <TextBox Grid.Column="1" Grid.Row="1" x:Name="AllCmd" Text="Command" Margin="0,7,7,0" GotKeyboardFocus="AllCmd_GotKeyboardFocus" LostKeyboardFocus="AllCmd_LostKeyboardFocus" />
+                            <TextBox Grid.Column="2" Grid.Row="0" x:Name="PlayCmd" Text="Command" Margin="0,7,7,0" GotKeyboardFocus="PlayCmd_GotKeyboardFocus" LostKeyboardFocus="PlayCmd_LostKeyboardFocus" />
                         </Grid>
                     </Viewbox>
                 </ScrollViewer>
