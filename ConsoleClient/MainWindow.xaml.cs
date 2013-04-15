@@ -515,5 +515,40 @@ namespace ConsoleClient {
                 Gperm.Text = "Permission Node";
             }
         }
+
+        private void ConPerm_GotKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e) {
+            if (ConPerm.Text == "Command") {
+                ConPerm.Text = "";
+            }
+        }
+
+        private void ConPerm_LostKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e) {
+            if (string.IsNullOrWhiteSpace(ConPerm.Text)) {
+                ConPerm.Text = "Command";
+            }
+        }
+
+        private void ConVal_GotKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e) {
+            if (ConVal.Text == "Permission Level (Numbers Only!)") {
+                ConVal.Text = "";
+            }
+        }
+
+        private void ConVal_LostKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e) {
+            if (string.IsNullOrWhiteSpace(ConVal.Text)) {
+                ConVal.Text = "Permission Level (Numbers Only!)";
+            }
+        }
+
+        private void ConsolePermButtonClick1(object sender, RoutedEventArgs e) {
+            if (!string.IsNullOrWhiteSpace(ConPerm.Text) || !string.IsNullOrWhiteSpace(ConVal.Text)) {
+                Connection.Write("/config perm nodevals." + ConPerm.Text + " " + ConVal.Text);
+                MessageBox.Show("Successfully added the permission: " + ConPerm.Text + ", to the permission list with a value of: " + ConVal.Text + "!");
+                ConPerm.Text = "Command";
+                ConVal.Text = "Permission Level (Numbers Only!)";
+            } else {
+                MessageBox.Show("Error! Please make sure to specify a command, and a value!");
+            }
+        }
     }
 }
